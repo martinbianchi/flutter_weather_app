@@ -94,18 +94,18 @@ abstract class _$CoordSerializerMixin {
 Main _$MainFromJson(Map<String, dynamic> json) {
   return new Main(
       (json['temp'] as num)?.toDouble(),
-      json['pressure'] as int,
+      (json['pressure'] as num)?.toDouble(),
       json['humidity'] as int,
-      json['temp_max'] as int,
-      json['temp_min'] as int);
+      (json['temp_max'] as num)?.toDouble(),
+      (json['temp_min'] as num)?.toDouble());
 }
 
 abstract class _$MainSerializerMixin {
   double get temp;
-  int get pressure;
+  double get pressure;
   int get humidity;
-  int get tempMax;
-  int get tempMin;
+  double get tempMax;
+  double get tempMin;
   Map<String, dynamic> toJson() => <String, dynamic>{
         'temp': temp,
         'pressure': pressure,
@@ -116,13 +116,13 @@ abstract class _$MainSerializerMixin {
 }
 
 Wind _$WindFromJson(Map<String, dynamic> json) {
-  return new Wind((json['speed'] as num)?.toDouble(), json['deg'] as int,
-      (json['gust'] as num)?.toDouble());
+  return new Wind((json['speed'] as num)?.toDouble(),
+      (json['deg'] as num)?.toDouble(), (json['gust'] as num)?.toDouble());
 }
 
 abstract class _$WindSerializerMixin {
   double get speed;
-  int get deg;
+  double get deg;
   double get gust;
   Map<String, dynamic> toJson() =>
       <String, dynamic>{'speed': speed, 'deg': deg, 'gust': gust};
